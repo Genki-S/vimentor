@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Vimentor::VERSION
   gem.authors       = ["Genki"]
   gem.email         = ["cfhoyuk.reccos.nelg@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{More than vimtutor}
+  gem.summary       = %q{Help you be much more efficient with Vim!}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
