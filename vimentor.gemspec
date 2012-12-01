@@ -1,12 +1,19 @@
-Gem::Specification.new do |s|
-  s.name        = "vimentor"
-  s.version     = "0.0.0"
-  s.summary     = "More than vimtutor"
-  s.description = "Train you to be more effective"
-  s.authors     = ["Genki Sugimoto"]
-  s.email       = ""
-  s.homepage    = ""
+# -*- encoding: utf-8 -*-
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'vimentor/version'
 
-  s.files       = `git ls-files`.split("\n")
-  s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+Gem::Specification.new do |gem|
+  gem.name          = "vimentor"
+  gem.version       = Vimentor::VERSION
+  gem.authors       = ["Genki"]
+  gem.email         = ["cfhoyuk.reccos.nelg@gmail.com"]
+  gem.description   = %q{TODO: Write a gem description}
+  gem.summary       = %q{TODO: Write a gem summary}
+  gem.homepage      = ""
+
+  gem.files         = `git ls-files`.split($/)
+  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.require_paths = ["lib"]
 end

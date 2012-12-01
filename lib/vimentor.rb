@@ -1,5 +1,5 @@
-class Vimentor
-  def self.hi
-    puts "Hello, gem!"
-  end
+require "vimentor/version"
+
+module Vimentor
+  # Your code goes here...
 end
