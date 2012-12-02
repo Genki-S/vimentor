@@ -11,12 +11,8 @@ module Vimentor
       say "End vim session."
 
       # Parse keylog
-      content = File.read(LOGFILE)
-      count = Hash.new(0)
-      content.split(//).each { |c|
-        count[c] += 1
-      }
-      say count
+      log = Keylog.new(File.read(LOGFILE))
+      say log.to_a
     end
   end
 
