@@ -1,12 +1,12 @@
 module Vimentor
 
   class CLI < Thor
-    desc "vim", "launch Vim session"
-    def vim()
-      vimcmd = "vim -W ~/vimkeylog"
-      puts "Invoking vim with -W option."
+    desc "vim ARGS", "launch Vim session"
+    def vim(*args)
+      vimcmd = "vim -W ~/vimkeylog #{args.join(" ")}"
+      say "Invoking: #{vimcmd}"
       system(vimcmd)
-      puts "End vim session."
+      say "End vim session."
     end
   end
 
