@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "thor"
   gem.add_dependency "strscan"
+  gem.add_dependency "facets"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

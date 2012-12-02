@@ -12,7 +12,7 @@ module Vimentor
 
       # Parse keylog
       log = Keylog.new(File.read(LOGFILE))
-      say log.to_a
+      say log.to_a.frequency
     end
   end
 
