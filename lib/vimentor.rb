@@ -1,3 +1,5 @@
+require "thor"
+
 require "vimentor/version"
 require "vimentor/cli"
 
