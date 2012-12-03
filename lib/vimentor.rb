@@ -1,5 +1,4 @@
 require "thor"
-require "strscan"
 require "facets"
 
 require "vimentor/version"
