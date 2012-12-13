@@ -20,7 +20,7 @@ module Vimentor
       say log.to_a.frequency
 
       # Create directory
-      d = SAVEROOT + Time.new().strftime("/%Y/%m/%d")
+      d = get_directory()
       FileUtils.mkdir_p(d) unless File.directory?(d)
 
       # File name root
@@ -33,7 +33,11 @@ module Vimentor
 
       # Save meta info
       info.store(fn_r + ".meta")
+    end
 
+    private
+    def get_directory(date = Date.today)
+      SAVEROOT + date.strftime("/%Y/%m/%d")
     end
 
   end
