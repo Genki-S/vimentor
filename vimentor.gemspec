@@ -13,6 +13,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = ""
 
   gem.add_dependency "thor"
+  gem.add_dependency "strscan"
   gem.add_dependency "facets"
 
   gem.files         = `git ls-files`.split($/)
