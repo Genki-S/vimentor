@@ -9,6 +9,16 @@ module Vimentor
     end
 
     def key_count()
+      count = Hash.new()
+      for f in keylog_files()
+        l = Keylog.new(
+          File.read(
+            Vimentor::Stat.get_directory(@date) + "/" + f))
+        count.merge!(l.to_a.frequency) { |key, oldval, newval|
+          oldval + newval
+         }
+      end
+      return count
     end
 
     def self.get_directory(date = Date.today)
