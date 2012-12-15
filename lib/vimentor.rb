@@ -3,6 +3,7 @@ require "date"
 require "thor"
 require "strscan"
 require "facets"
+require "rserve"
 
 require "vimentor/version"
 require "vimentor/cli"
