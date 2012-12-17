@@ -16,7 +16,15 @@ module Vimentor
             Vimentor::Stat.get_directory(@date) + "/" + f))
         count.merge!(l.to_a.frequency) { |key, oldval, newval|
           oldval + newval
-         }
+        }
+      end
+      return count
+    end
+
+    def total_key_count()
+      count = 0
+      key_count().each do |k, v|
+        count += v
       end
       return count
     end

@@ -42,6 +42,7 @@ module Vimentor
       say "Stat of #{d.to_s}"
       say "Using " + Rserve::Connection.new.eval("R.version.string").as_string
       say "Invoke: #{s.invoke_count} times"
+      say "Total key count: #{s.total_key_count}"
       say "Key count hash:"
       say s.key_count
     end
