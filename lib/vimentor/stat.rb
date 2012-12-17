@@ -8,7 +8,7 @@ module Vimentor
       meta_files().size
     end
 
-    def key_count()
+    def key_count_hash()
       count = Hash.new()
       for f in keylog_files()
         l = Keylog.new(
@@ -23,7 +23,7 @@ module Vimentor
 
     def total_key_count()
       count = 0
-      key_count().each do |k, v|
+      key_count_hash().each do |k, v|
         count += v
       end
       return count
