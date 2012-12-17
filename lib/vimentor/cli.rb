@@ -39,7 +39,7 @@ module Vimentor
     def stat(date_str = Date.today.to_s)
       d = Date.parse(date_str)
       s = Stat.new(d)
-      say "Stat of #{d.to_s}"
+      say "Stat of #{d.strftime("%Y/%m/%d (%a)")}"
       say "Using " + Rserve::Connection.new.eval("R.version.string").as_string
       say "Invoke: #{s.invoke_count} times"
       say "Total key count: #{s.total_key_count}"
