@@ -44,7 +44,7 @@ module Vimentor
       say "Invoke: #{s.invoke_count} times"
       say "Total key count: #{s.total_key_count}"
       say "Key count hash:"
-      say s.key_count_hash.sort_by{|k, v| v}.reverse
+      say s.most_frequent_keys()
     end
 
   end
