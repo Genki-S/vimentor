@@ -35,6 +35,17 @@ module Vimentor
       info.store(fn_r + ".meta")
     end
 
+    desc "stat [DAY]", "show the stat of a day"
+    def stat(date_str = Date.today.to_s)
+      d = Date.parse(date_str)
+      s = Stat.new(d)
+      say "Stat of #{d.to_s}"
+      say "Using " + Rserve::Connection.new.eval("R.version.string").as_string
+      say "Invoke: #{s.invoke_count} times"
+      say "Key count hash:"
+      say s.key_count
+    end
+
   end
 
 end
