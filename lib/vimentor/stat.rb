@@ -11,9 +11,7 @@ module Vimentor
     def key_count_hash()
       count = Hash.new()
       for f in keylog_files()
-        l = Keylog.new(
-          File.read(
-            Vimentor::Stat.get_directory(@date) + "/" + f))
+        l = Keylog.new(File.read(get_dir() + "/" + f))
         count.merge!(l.to_a.frequency) { |key, oldval, newval|
           oldval + newval
         }
@@ -46,6 +44,10 @@ module Vimentor
     end
 
     private
+    def get_dir()
+      Vimentor::Stat.get_directory(@date)
+    end
+
     def meta_files()
       Dir.entries(Vimentor::Stat.get_directory(@date)).
         select { |f| f =~ /.*\.meta/ }
