@@ -34,7 +34,6 @@ END
       STDIN.gets
     end
 
-    private
     def rdo(str)
       @connection.eval(str)
     end
