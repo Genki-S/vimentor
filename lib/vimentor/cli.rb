@@ -44,8 +44,8 @@ module Vimentor
       say "Using " + r.version
       say "Invoke: #{s.invoke_count} times"
       say "Total key count: #{s.total_key_count}"
-      say "Key count hash:"
-      say s.most_frequent_keys()
+      say "Showing key frequency graph"
+      r.plot_2d_array(s.most_frequent_keys(5))
     end
 
   end
