@@ -207,9 +207,10 @@ module Vimentor
 
             # Otherwise, use <C-x> format
           when 0..31; "<C-#{(n + 64).chr}>"
-
+            # Space
+          when 32; "<Space>"
             # The rest of ANSI is printable
-          when 32..126; c
+          when 33..126; c
 
           else
             #puts "Unexpected extended ASCII: #{'%#04x' % n}"
