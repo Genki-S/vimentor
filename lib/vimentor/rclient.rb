@@ -3,6 +3,13 @@ module Vimentor
 
     def initialize()
       @connection = Rserve::Connection.new
+      r_init()
+    end
+
+    def r_init()
+      @connection.eval("library(Matrix)")
+      @connection.eval("library(arules)")
+      @connection.eval("library(arulesSequences)")
     end
 
     def version()
