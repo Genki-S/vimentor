@@ -39,31 +39,26 @@ module Vimentor
       return count
     end
 
-    def sequential_mining(rclient)
-      tmpf = Tempfile.new("sequence")
-      event_id = 0
-      for f in keylog_files()
-        event_id += 1
-        event_time = 0
-        log = Keylog.new(File.read(get_dir() + "/" + f))
-        for key in log.to_a
-          event_time += 1
-          line = event_id.to_s + " " + event_time.to_s + " " +
-            "1" + " " + key
-          tmpf.puts(line)
+    def sequential_mining()
+      cnth = Hash.new(0)
+      for len in 2..5
+        for f in keylog_files()
+          log_a = Keylog.new(File.read(get_dir() + "/" + f)).to_a
+          for i in 0..log_a.length - len
+            seqence = ""
+            for j in i..i+len-1
+              seqence += log_a[j]
+            end
+            cnth[seqence] += 1
+          end
         end
       end
-      tmpf.rewind
-      cmd = <<END
-x <- read_baskets(con = "#{tmpf.path}", info = c("sequenceID","eventID","SIZE"));
-s1 <- cspade(x, parameter = list(support = 0.4), control = list(verbose = TRUE));
-summary(s1)
-as(s1, "data.frame")
-END
-      t = rclient.rdo(cmd)
-      #puts t.as_list[0].levels
-      puts t.as_list[0].as_strings
-      tmpf.close
+      puts "Top 10 frequent sequences"
+      puts "Count\tSequence"
+      freq_seqs = cnth.sort_by{|seq, cnt| cnt * -1}
+      for i in 0..9
+        puts "#{freq_seqs[i][1]}\t#{freq_seqs[i][0]}"
+      end
     end
 
     def self.get_directory(date = Date.today)
