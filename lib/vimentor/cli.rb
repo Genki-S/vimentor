@@ -42,7 +42,18 @@ module Vimentor
       say "Stat of #{d.strftime("%Y/%m/%d (%a)")}"
       say "Invoke: #{s.invoke_count} times"
       say "Total key count: #{s.total_key_count}"
-      s.sequential_mining()
+      cnth = s.most_frequent_patterns()
+      puts "Top 10 frequent sequences"
+      puts "Count\tSequence"
+      freq_seqs = cnth.sort_by{|seq, cnt| cnt * -1}
+      for i in 0..9
+        puts "#{freq_seqs[i][1]}\t#{freq_seqs[i][0]}"
+      end
+    end
+
+    desc "stat_a", "show the stat of all time"
+    def stat_a()
+      
     end
 
   end
