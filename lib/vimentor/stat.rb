@@ -39,9 +39,9 @@ module Vimentor
       return count
     end
 
-    def sequential_mining()
+    def most_frequent_patterns(min_pat_len, max_pat_len)
       cnth = Hash.new(0)
-      for len in 2..5
+      for len in min_pat_len..max_pat_len
         for f in keylog_files()
           log_a = Keylog.new(File.read(get_dir() + "/" + f)).to_a
           for i in 0..log_a.length - len
@@ -53,12 +53,7 @@ module Vimentor
           end
         end
       end
-      puts "Top 10 frequent sequences"
-      puts "Count\tSequence"
-      freq_seqs = cnth.sort_by{|seq, cnt| cnt * -1}
-      for i in 0..9
-        puts "#{freq_seqs[i][1]}\t#{freq_seqs[i][0]}"
-      end
+      return cnth
     end
 
     def self.get_directory(date = Date.today)

@@ -42,7 +42,33 @@ module Vimentor
       say "Stat of #{d.strftime("%Y/%m/%d (%a)")}"
       say "Invoke: #{s.invoke_count} times"
       say "Total key count: #{s.total_key_count}"
-      s.sequential_mining()
+      cnth = s.most_frequent_patterns(2, 5)
+      puts "Top 10 frequent sequences"
+      puts "Count\tSequence"
+      freq_seqs = cnth.sort_by{|seq, cnt| cnt * -1}
+      for i in 0..9
+        puts "#{freq_seqs[i][1]}\t#{freq_seqs[i][0]}"
+      end
+    end
+
+    desc "stat_a", "show the stat of all time"
+    def stat_a()
+      cnth = Hash.new(0)
+      Dir.entries(SAVEROOT).select{|f| f !~ /^\..*/}.each do |y|
+        Dir.entries(SAVEROOT+"/"+y).select{|f| f !~ /^\..*/}.each do |m|
+          Dir.entries(SAVEROOT+"/"+y+"/"+m).select{|f| f !~ /^\..*/}.each do |d|
+            d = Date.parse(y+"/"+m+"/"+d)
+            s = Stat.new(d)
+            cnth.merge!(s.most_frequent_patterns(2, 5)) { |key, oldval, newval|
+              oldval + newval
+            }
+          end
+        end
+      end
+      freq_seqs = cnth.sort_by{|seq, cnt| cnt * -1}
+      for i in 0..29
+        puts "#{freq_seqs[i][1]}\t#{freq_seqs[i][0]}"
+      end
     end
 
   end
