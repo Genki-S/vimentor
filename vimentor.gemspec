@@ -13,9 +13,8 @@ Gem::Specification.new do |gem|
   gem.homepage      = ""
 
   gem.add_dependency "thor"
-  gem.add_dependency "strscan"
   gem.add_dependency "facets"
-  gem.add_dependency "rserve"
+  gem.add_dependency "rserve-client"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
