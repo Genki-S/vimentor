@@ -39,9 +39,9 @@ module Vimentor
       return count
     end
 
-    def most_frequent_patterns()
+    def most_frequent_patterns(min_pat_len, max_pat_len)
       cnth = Hash.new(0)
-      for len in 2..5
+      for len in min_pat_len..max_pat_len
         for f in keylog_files()
           log_a = Keylog.new(File.read(get_dir() + "/" + f)).to_a
           for i in 0..log_a.length - len
